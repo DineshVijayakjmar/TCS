@@ -1,0 +1,61 @@
+package tcs;
+import java.util.*;
+import java.lang.Math;
+/**
+ *
+ * @author dines
+ */
+public class TCS {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Scanner sc=new Scanner(System.in);
+        int hours=sc.nextInt();
+        int n=sc.nextInt();
+        int N=hours/n, t=1, count=0;
+        int arr[][]=new int[N][n];
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<N;j++)
+            {
+                arr[j][i]=t++;
+            }
+        }
+        for(int i=0;i<N;i++)
+        {
+            boolean flag=true;
+            for(int j=0;j<n;j++)
+            {
+                if(!isPrime(arr[i][j]))
+                {
+                    flag=false;
+                    break;
+                }
+            }
+            if(flag)
+            {
+                count++;
+            }
+        }
+        System.out.println(count);
+    }
+    public static boolean isPrime(int n)
+    {
+        if(n==1)
+        {
+            return false;
+        }
+        for(int i=2;i<Math.sqrt(n);i++)
+        {
+            if(n%i==0)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+}
